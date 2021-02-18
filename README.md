@@ -18,7 +18,7 @@ its generated code in the future.
 
 ### Troubleshooting dev setup
 
-- psychopg2 will not install cleanly: this can be a finicky package. On Mac, for instance, you may
+- psycopg2 will not install cleanly: this can be a finicky package. On Mac, for instance, you may
   have to explicitly install and/or add openssl libs to the library path, e.g.:
 
     ```bash
