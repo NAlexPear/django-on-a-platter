@@ -1,3 +1,6 @@
+# Generated platter db config
+testsite/db.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

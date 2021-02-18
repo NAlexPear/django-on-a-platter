@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+echo "Creating initial Platter db config"
+python testsite/update_db.py testsite $(cat .git/HEAD | sed -e "s:^.*/::")
+echo "Watching for git branch changes..."
+watchmedo shell-command \
+  --patterns=".git/HEAD" \
+  --ignore-directories \
+  --command='[ ${watch_event_type} == "moved" ] && python testsite/update_db.py testsite $(cat .git/HEAD | sed -e "s:^.*/::")' \
+  . 2> /dev/null
