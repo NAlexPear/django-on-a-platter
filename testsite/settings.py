@@ -15,7 +15,8 @@ from .update_db import get_platter_db
 try:
     from .db import platter_db
 except:
-    platter_db, _ = get_platter_db()
+    raise ImportError(
+        'No Platter db config found. Did you start the platter_watch command?')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

@@ -80,7 +80,7 @@ if __name__ == "__main__":
             print('Error fetching or creating Platter DB config:\n\n{}\n{}'.format(
                 err.decode("utf-8"),
                 err2.decode("utf-8")))
-            sys.exit()
+            sys.exit(1)
         print('Getting DB configuration for new branch {}'.format(branch))
         _db_dict, _ = get_platter_db(instance, branch)
 

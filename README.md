@@ -28,7 +28,20 @@ its generated code in the future.
 
 ## Develop
 
-- Run `./platter_watch`, which will track the current git branch and configure the Django app to use
-  the appropriate Platter database branch (read more about Platter resource branching
-  [here](https://docs.platter.dev/concepts/branching)).
+- Ensure you have a Platter database instance name: `platter postgres create <instance_name>`. This
+  command will ask you to pick platforms; choose none, and then pick the default path. No code will
+  be generated, but your database will be created. In the future `platter postgres create` will be
+  less tied to node/web installations.
+- Run `./platter_watch <instance_name>`, which will track the current git branch and configure the
+  Django app to use the appropriate Platter database branch (read more about Platter resource
+  branching [here](https://docs.platter.dev/concepts/branching)).
 - In another terminal/tab, run the Django app: `python manage.py runserver`
+- Now, as long as those two processes are running, whenever you check out a new branch,
+  `platter_watch` will create config that your app can use to connect to a database branch, and your
+  dev server will automatically reload.
+
+## Deploy
+
+Hey, this is just a spike! But if you really want to deploy it, you should just run `python
+testsite/update_db.py <instance_name> master` before running migrations and starting the server in
+your deployment.
