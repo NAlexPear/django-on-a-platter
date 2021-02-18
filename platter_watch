@@ -2,7 +2,7 @@
 
 if [ $# -eq 0 ]; then
   echo "Please supply a Platter database instance name that your user has access to."
-  echo "usage: ./$0 <instance_name>"
+  echo "usage: $0 <instance_name>"
   exit 1
 fi
 
