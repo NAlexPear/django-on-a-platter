@@ -11,7 +11,7 @@ its generated code in the future.
 
 - Install `pipenv`
 - Install deps with `pipenv install`
-- Install `platter` somewhere on your PATH, ensuring you have an account from
+- Install `platter` somewhere on your PATH (<https://github.com/boilerplatter/releases/releases>), ensuring you have an account from
   <https://dashboard.platter.dev/register>
 - Log in to your Platter account: `platter identity login`
 - Launch a project-specific shell: `pipenv shell`
