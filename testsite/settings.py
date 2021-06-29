@@ -10,16 +10,29 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
+import dj_database_url
 from pathlib import Path
-from .update_db import get_platter_db
-try:
-    from .db import platter_db
-except:
-    raise ImportError(
-        'No Platter db config found. Did you start the platter_watch command?')
+from dotenv import load_dotenv, find_dotenv
+from django.utils.autoreload import autoreload_started
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# load environment variables
+env_file = find_dotenv()
+load_dotenv(env_file)
+
+# Watch .env files
+def watch_extra_files(sender, *args, **kwargs):
+    watch = sender.extra_files.add
+    watch_list = [env_file]
+
+    for file in watch_list:
+        watch(Path(file))
+
+
+autoreload_started.connect(watch_extra_files)
 
 
 # Quick-start development settings - unsuitable for production
@@ -80,10 +93,7 @@ WSGI_APPLICATION = 'testsite.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        **platter_db,
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    }
+    'default': dj_database_url.config(default=os.environ.get('DJANGO_ON_A_CLOUD_URL'))
 }
 
 
