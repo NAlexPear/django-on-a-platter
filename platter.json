@@ -1,0 +1,13 @@
+{
+  "postgres": {
+    "e8c18a67-ecbe-4302-bac1-3ed2e07e9922": {
+      "files": {
+        "env": {
+          "autoBranch": true,
+          "key": "DJANGO_ON_A_CLOUD_URL",
+          "file": ".env"
+        }
+      }
+    }
+  }
+}
